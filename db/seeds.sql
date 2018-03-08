@@ -1,11 +1,12 @@
+USE burgers_db;
 
-INSERT INTO burgers (id, burger_name, devoured)
-VALUES (1,cheeseburger,yes); 
-
-
-INSERT INTO burgers (id, burger_name, devoured)
-VALUES (1,baconburger,yes);
+INSERT INTO burgers (id, burger_name)
+VALUES (1,'cheeseburger'); 
 
 
-INSERT INTO burgers (id, burger_name, devoured)
-VALUES (1,mushroomburger,yes);
+INSERT INTO burgers (id, burger_name)
+VALUES (2,'baconburger');
+
+
+INSERT INTO burgers (id, burger_name)
+VALUES (3,'mushroomburger');
