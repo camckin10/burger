@@ -40,7 +40,9 @@ var orm = {
     all: function(tableInput, cb) {
         var queryString = 'SELECT * FROM ' + tableInput;
 
+        console.log("right outside connection.query");
         connection.query(queryString, function(err, result) {
+            console.log("inside connection query");
             if (err) throw err;
             cb(result);
         });

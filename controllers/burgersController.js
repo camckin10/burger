@@ -15,9 +15,17 @@ router.get("/", function(req, res) {
     res.redirect('/burgers');
 });
 
+// router.get("/burgers", function(req,res){
+//     res.render("index", )
+// })
+
 //second .get is going to print to handlebars all of burgers data entered
-router.get("/", function(req, res) {
+router.get("/burgers", function(req, res) {
+    console.log("inside burgers route");
+    console.log("here is the burgers object", burgers);
     burgers.all(function(data) {
+        console.log("inside burgers.all");
+        console.log("data is", data);
         var hbsObject = {
             burgers: data
         };
@@ -29,33 +37,35 @@ router.get("/", function(req, res) {
 //will this auto increment id of burger??
 //OR is this just creating new data??
 router.post("/burgers/create", function(req, res) {
-            burgers.create([
-                    "burger_name", [req.body.name],
-                    function(result) {
-                        // Send back the ID of the new quote
-                        res.json({ id: result.insertId });
+    burgers.create([
+        "burger_name", [req.body.name],
+        function(result) {
+            // Send back the ID of the new quote
+            res.json({ id: result.insertId });
 
-                        //maybe res.redirect('/burgers);
-                    });
-            });
-
-        router.put("/burgers/update/:id", function(req, res) {
-            var condition = "id = " + req.params.id;
-
-            console.log("condition", condition);
-
-            burgers.update({
-                devoured: req.body.devoured,
-            }, condition, function(data) {
-
-                //always redirect to homepage??
-                res.redirect('/burgers);
-                }
-            });
-        });
+            //maybe res.redirect('/burgers);
+        }
+    ])
+});
 
 
+router.put("/burgers/update/:id", function(req, res) {
+    var condition = "id = " + req.params.id;
+
+    console.log("condition", condition);
+
+    burgers.update({
+        devoured: req.body.devoured,
+    }, condition, function(data) {
+
+        //always redirect to homepage??
+        res.redirect('/burgers');
+
+    });
+});
 
 
-        //exporting router @ end of file
-        module.exports = router;
+
+
+//exporting router @ end of file
+module.exports = router;

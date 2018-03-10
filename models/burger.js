@@ -1,18 +1,19 @@
 //exporting orm.js file
 var orm = require('../config/orm.js');
 
-var burgers = {
-    all:
-    //SELECT * FROM
-        create:
-        //INSERT INTO
-        update:
-        //UPDATE 
-}
+// var burgers = {
+//     all:
+//     //SELECT * FROM
+//         create:
+//         //INSERT INTO
+//         update:
+//         //UPDATE 
+// }
 
-var burgers = {
+var burger = {
     all: function(cb) {
         orm.all('burgers', function(res) {
+            console.log("res is", res);
             cb(res);
         });
     },
